@@ -1,0 +1,70 @@
+{
+    "decks": [
+        {
+            "cards": [
+                {
+                    "front": "Ego",
+                    "back": {
+                        "title": "I",
+                        "desc": "dfsjoewotu23985u7",
+                        "image": "https://pbs.twimg.com/media/E4VUrbkWUAYr-6b.jpg",
+                        "audio": "https://www.ipachart.com/mp3/Voiceless_epiglottal_fricative.mp3"
+                    },
+                    "id": 0
+                },
+                {
+                    "front": "propter",
+                    "back": {
+                        "title": "I"
+                    },
+                    "id": 1
+                },
+                {
+                    "front": "id",
+                    "back": {
+                        "title": "I"
+                    },
+                    "id": 2
+                },
+                {
+                    "front": "hoc",
+                    "back": {
+                        "title": "I"
+                    },
+                    "id": 3
+                }
+            ],
+            "desc": "Lorem ipsum ego sum propter hoc",
+            "id": 0,
+            "name": "Latin Words"
+        },
+        {
+            "cards": [
+                {
+                    "front": "Patata",
+                    "back": {
+                        "title": "I"
+                    },
+                    "id": 0
+                },
+                {
+                    "front": "mierda",
+                    "back": {
+                        "title": "I"
+                    },
+                    "id": 1
+                },
+                {
+                    "front": "coño",
+                    "back": {
+                        "title": "I"
+                    },
+                    "id": 2
+                }
+            ],
+            "desc": "Tu eres caca",
+            "id": 1,
+            "name": "Spanish Words"
+        }
+    ]
+}

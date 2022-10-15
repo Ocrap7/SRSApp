@@ -1,19 +1,22 @@
 import { StyleSheet, Animated, View, Text, Button, Easing, Dimensions, FlatList, TouchableWithoutFeedback } from "react-native";
+import { Deck } from "./Deck";
 import HoverOpacity from "./HoverOpacity";
+import TestDeck from './TestDeck.json'
 
-export default function DeckList(props) {
+export interface DeckListProps {
+    onDeckSelect: (item: Deck) => void;
+}
+
+export default function DeckList(props: DeckListProps) {
     return (
         <View style={styles.container}>
             <Text style={styles.nameText}>Available Decks</Text>
-            <FlatList data={
-                [
-                    { name: 'Latin Words', desc: 'Lorem ipsum ego sum propter hoc', cards: [{ front: 'Ego' }, {front: 'propter'}, {front: 'id'}, {front: 'hoc'}] },
-                    { name: 'Spanish Words', desc: 'Tu eres caca', cards: [{ front: 'Patata' }, {front: 'mierda'}, {front: 'coño'}] },
-                ]
+            <FlatList<Deck> data={
+                TestDeck.decks
             }
                 contentContainerStyle={styles.list}
                 renderItem={({ item }) => {
-                    return <HoverOpacity style={{flex: 0,}}>
+                    return <HoverOpacity style={{ flex: 0, }}>
                         <TouchableWithoutFeedback onPress={_ => props.onDeckSelect(item)} >
                             <View style={styles.item}>
                                 <Text style={styles.nameText} selectable={false}>{item.name}</Text>

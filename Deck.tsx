@@ -1,23 +1,37 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { StyleSheet, Animated, View, Text, Button, Easing, Dimensions } from "react-native";
 import Controls from "./Controls";
-import Card from "./Card";
+import CardView, { Card } from "./Card";
 
-export default function Deck(props) {
+export interface Deck {
+    id: number,
+    name: string,
+    desc: string,
+    cards: Card[],
+}
+
+export const Console = (prop: any) => (
+  (console as any)[Object.keys(prop)[0]](...Object.values(prop))
+  ,null // ➜ React components must return something 
+)
+
+const AnimationDuration: number = 500;
+
+export default function DeckView(props: { deck: Deck }) {
     const fadeAnim = useRef(new Animated.Value(0)).current
-    const [cards, setCards] = useState([...props.cards]);
+    const [deck, setCards] = useState(props.deck);
 
-    const out = (finish) => {
+    const out = () => {
         Animated.timing(
             fadeAnim,
             {
                 toValue: 1,
-                duration: 1000,
-                easing: Easing.linear(),
+                duration: AnimationDuration,
+                easing: Easing.linear,
                 useNativeDriver: true,
             }
         ).start(({ finished }) => {
-            setCards(cards.slice(1))
+            setCards({ ...deck, cards: deck.cards.slice(1) })
             fadeAnim.setValue(0.0)
             // finish()
         });
@@ -33,7 +47,7 @@ export default function Deck(props) {
             {/* {Dimensions.get('window').width > 600 && <View style={{position: 'fixed', backgroundColor: '#323437', height: '100%', width: '30%', right: 0, zIndex: 3}}></View>} */}
             <View style={styles.card}>
                 {
-                    cards.map((e, i) =>
+                    deck.cards.map((e, i) =>
                     (
                         <Animated.View key={e.id} style={{
                             marginRight: 200.0,
@@ -44,7 +58,7 @@ export default function Deck(props) {
                                 })
                             }]
                         }}>
-                            <Card card={e} />
+                            <CardView card={e} />
                         </Animated.View>
                     )
                     )
@@ -63,7 +77,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: 400.0,
         // justifyContent: "centers",
-        
+
     },
     controls: {
         overflow: 'hidden',

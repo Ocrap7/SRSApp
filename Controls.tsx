@@ -1,6 +1,12 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-export default function Controls(props) {
+export interface ControlsProps {
+    onNo?: () => void;
+    onBad?: () => void;
+    onYes?: () => void;
+}
+
+export default function Controls(props: ControlsProps) {
     return (
         <View style={styles.controls}>
             <TouchableOpacity onPress={props.onNo} style={{ ...styles.buttonBackground, backgroundColor: "#FA373B" }}>
